@@ -1,0 +1,38 @@
+# DAST del micro frontend con OWASP ZAP (baseline pasivo + reglas activas seguras):
+# headers de seguridad, CSP, cookies, clickjacking, divulgación de información, XSS reflejado.
+name: DAST
+
+on:
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '37 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  zap-baseline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Levantar el micro frontend (imagen de producción)
+        run: |
+          docker build -t web:dast .
+          docker run -d --name web -p 3002:3002 -e MSE_RECAUDOS_URL=http://127.0.0.1:9 web:dast
+          for i in $(seq 1 30); do curl -sf http://localhost:3002/session/expired >/dev/null && break; sleep 2; done
+      - name: OWASP ZAP baseline
+        run: |
+          mkdir -p reports && chmod 777 reports
+          docker run --rm --network host -v "$PWD":/zap/wrk:rw ghcr.io/zaproxy/zaproxy:stable \
+            zap-baseline.py -t http://localhost:3002 -c /zap/wrk/.zap/rules.tsv \
+            -r reports/zap.html -J reports/zap.json -I -j
+      - name: Fallar si hay alertas High
+        run: |
+          HIGH=$(jq '[.site[].alerts[] | select(.riskcode=="3")] | length' reports/zap.json)
+          echo "Alertas High: $HIGH"
+          test "$HIGH" -eq 0
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: zap-report, path: reports/ }

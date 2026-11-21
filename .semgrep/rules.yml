@@ -1,0 +1,30 @@
+# Reglas SAST propias del micro frontend.
+rules:
+  - id: no-dangerously-set-inner-html
+    message: Prohibido dangerouslySetInnerHTML (XSS). Renderizar texto o sanitizar en servidor.
+    severity: ERROR
+    languages: [typescript]
+    pattern: <$EL dangerouslySetInnerHTML={...} />
+
+  - id: no-next-public-secrets
+    message: Variables NEXT_PUBLIC_* se embeben en el bundle del navegador; no usarlas para secretos/URLs internas
+    severity: ERROR
+    languages: [typescript]
+    pattern-regex: process\.env\.NEXT_PUBLIC_[A-Z_]*(SECRET|TOKEN|KEY|PASSWORD|INTERNAL)
+
+  - id: no-token-in-storage
+    message: No guardar tokens/sesión en localStorage/sessionStorage (accesibles por XSS); usar cookie HttpOnly
+    severity: ERROR
+    languages: [typescript]
+    pattern-either:
+      - pattern: localStorage.setItem(...)
+      - pattern: sessionStorage.setItem(...)
+
+  - id: bridge-postmessage-only-via-client
+    message: Enviar mensajes a la app solo mediante `bridge.send` (valida el contrato)
+    severity: WARNING
+    languages: [typescript]
+    patterns:
+      - pattern: window.ReactNativeWebView.postMessage(...)
+      - pattern-not-inside: |
+          class NativeBridge { ... }
