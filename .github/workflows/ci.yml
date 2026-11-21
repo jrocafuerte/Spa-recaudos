@@ -109,7 +109,7 @@ jobs:
       - run: npm ci --ignore-scripts
       - run: npm audit --omit=dev --audit-level=high
       - run: npx --yes @cyclonedx/cyclonedx-npm --omit dev --output-file sbom.cdx.json
-      - uses: aquasecurity/trivy-action@0.28.0
+      - uses: aquasecurity/trivy-action@v0.36.0
         with:
           scan-type: fs
           scanners: vuln,secret,misconfig
@@ -134,7 +134,7 @@ jobs:
       - uses: hadolint/hadolint-action@v3.1.0
         with: { dockerfile: Dockerfile, failure-threshold: warning }
       - run: docker build -t spa-recaudos:${{ github.sha }} .
-      - uses: aquasecurity/trivy-action@0.28.0
+      - uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: spa-recaudos:${{ github.sha }}
           severity: HIGH,CRITICAL
