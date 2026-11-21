@@ -36,6 +36,36 @@ export const REQUIRED_COLORS = [
   'borderSelected',
 ];
 const THEMES = ['light', 'dark'];
+
+/**
+ * Pares de colores que deben ser legibles (WCAG 2.2 AA): 4.5:1 texto normal,
+ * 3:1 elementos no textuales (bordes de componentes, foco).
+ */
+export const CONTRAST_PAIRS = [
+  ['text', 'background', 4.5],
+  ['text', 'surface', 4.5],
+  ['textMuted', 'background', 4.5],
+  ['textMuted', 'surface', 4.5],
+  ['onPrimary', 'primary', 4.5],
+  ['primary', 'surface', 4.5],
+  ['primary', 'background', 4.5],
+  ['danger', 'surface', 4.5],
+  ['danger', 'background', 4.5],
+  ['success', 'surface', 4.5],
+  ['borderSelected', 'surface', 3],
+];
+
+function luminance(hex) {
+  const [r, g, b] = [1, 3, 5].map((i) => {
+    const c = Number.parseInt(hex.slice(i, i + 2), 16) / 255;
+    return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+  });
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+}
+const contrast = (a, b) => {
+  const [hi, lo] = [luminance(a), luminance(b)].sort((x, y) => y - x);
+  return (hi + 0.05) / (lo + 0.05);
+};
 const HEADER = 'ARCHIVO GENERADO por design-tokens/build.mjs — NO EDITAR. Modifica design-tokens/*.tokens.json';
 
 async function resolve(theme) {
@@ -63,6 +93,12 @@ function validate(theme, tokens) {
       );
     }
   }
+  const failures = CONTRAST_PAIRS.map(([fg, bg, min]) => {
+    const ratio = contrast(colors[fg].value, colors[bg].value);
+    return ratio < min ? `color.${fg} sobre color.${bg} = ${ratio.toFixed(2)}:1 (mínimo ${min}:1)` : undefined;
+  }).filter(Boolean);
+  if (failures.length)
+    throw new Error(`Tema ${theme}: contraste insuficiente (WCAG 2.2 AA)\n  - ${failures.join('\n  - ')}`);
 }
 
 const px = (v) => (typeof v === 'number' ? v : Number.parseFloat(String(v)));

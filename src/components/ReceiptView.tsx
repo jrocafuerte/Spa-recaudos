@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { api } from '@/lib/api/client';
 import { type Receipt, formatMoney } from '@/lib/api/types';
 import { bridge } from '@/lib/bridge/bridge';
+import { formatDateTime } from '@/lib/format';
 import { useNativeHeader } from '@/lib/bridge/BridgeProvider';
 
 export function ReceiptView({ paymentId }: { paymentId: string }) {
@@ -29,7 +30,7 @@ export function ReceiptView({ paymentId }: { paymentId: string }) {
     bridge.send({
       type: 'SHARE_RECEIPT',
       payload: {
-        text: `Pago ${r.billerName} · Ref. ${r.reference} · ${formatMoney(r.total, r.currency)} · Cód. ${r.authorizationCode} · ${new Date(r.executedAt).toLocaleString('es')}`,
+        text: `Pago ${r.billerName} · Ref. ${r.reference} · ${formatMoney(r.total, r.currency)} · Cód. ${r.authorizationCode} · ${formatDateTime(r.executedAt)}`,
       },
     });
 
@@ -51,7 +52,7 @@ export function ReceiptView({ paymentId }: { paymentId: string }) {
           <dt>Código</dt>
           <dd>{r.authorizationCode}</dd>
           <dt>Fecha</dt>
-          <dd>{new Date(r.executedAt).toLocaleString('es')}</dd>
+          <dd>{formatDateTime(r.executedAt)}</dd>
         </dl>
       </div>
       <button className="btn secondary" onClick={share}>

@@ -30,6 +30,12 @@ input {
   user-select: text;
 }
 
+/* Foco visible con el color de marca (accesibilidad de teclado / lectores), sin el anillo genérico. */
+:focus-visible {
+  outline: var(--border-width-selected) solid var(--color-border-selected);
+  outline-offset: var(--border-width-selected);
+}
+
 .screen {
   padding: var(--spacing-lg) var(--spacing-lg) calc(var(--spacing-xl) + env(safe-area-inset-bottom));
   max-width: 560px; /* layout, no token visual */
@@ -136,6 +142,10 @@ h2 {
   border: var(--border-width-thin) solid var(--color-border);
   background: var(--color-surface);
   color: var(--color-text);
+}
+.field input:focus {
+  outline: none;
+  border-color: var(--color-border-selected);
 }
 
 .btn {

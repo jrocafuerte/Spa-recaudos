@@ -53,5 +53,4 @@ export interface Receipt {
   executedAt: string;
 }
 
-export const formatMoney = (n: number, c: Currency) =>
-  new Intl.NumberFormat('es', { style: 'currency', currency: c, minimumFractionDigits: 2 }).format(n);
+export { formatMoney } from '../format';

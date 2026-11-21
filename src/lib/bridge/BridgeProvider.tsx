@@ -2,6 +2,7 @@
 
 import { usePathname, useRouter } from 'next/navigation';
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
+import { setLocale } from '../format';
 import { bridge } from './bridge';
 import type { NativeToWeb } from './protocol';
 
@@ -32,6 +33,8 @@ export function BridgeProvider({ children }: { children: ReactNode }) {
       switch (msg.type) {
         case 'INIT':
           document.documentElement.dataset.theme = msg.payload.theme;
+          document.documentElement.lang = msg.payload.locale;
+          setLocale(msg.payload.locale);
           setState((s) => ({ ...s, init: msg.payload }));
           break;
         case 'BACK_PRESSED':

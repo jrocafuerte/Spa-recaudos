@@ -58,6 +58,11 @@ class NativeBridge {
     timeoutMs = 90_000,
   ): Promise<Extract<NativeEnvelope, { type: T }>> {
     return new Promise((resolve, reject) => {
+      // En producción el micro frontend solo opera dentro de la app: sin puente no hay quien responda.
+      if (!this.isEmbedded && process.env.NODE_ENV === 'production') {
+        reject(new Error('Esta operación solo está disponible desde la app del banco'));
+        return;
+      }
       const id = this.send(message);
       const timer = setTimeout(() => {
         this.pending.delete(id);

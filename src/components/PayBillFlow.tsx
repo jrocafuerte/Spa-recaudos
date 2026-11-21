@@ -12,6 +12,7 @@ import {
   formatMoney,
 } from '@/lib/api/types';
 import { bridge } from '@/lib/bridge/bridge';
+import { formatDate } from '@/lib/format';
 import { useNativeHeader } from '@/lib/bridge/BridgeProvider';
 
 type Step = 'reference' | 'select' | 'confirm';
@@ -147,7 +148,7 @@ export function PayBillFlow({ billerId }: { billerId: string }) {
                   <button className="row" aria-pressed={debtId === d.id} onClick={() => setDebtId(d.id)}>
                     <span>
                       {d.description}
-                      <small>Vence {new Date(d.dueDate).toLocaleDateString('es')}</small>
+                      <small>Vence {formatDate(d.dueDate)}</small>
                     </span>
                     <strong>{formatMoney(d.amount, d.currency)}</strong>
                   </button>
