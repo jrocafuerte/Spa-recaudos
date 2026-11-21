@@ -32,7 +32,7 @@ jobs:
       - name: El bundle del navegador no contiene secretos ni URLs internas
         run: |
           ! grep -rE "INTERNAL_CLIENT_SECRET|MSE_RECAUDOS_URL|x-internal-client-secret" .next/static
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with: { name: coverage, path: coverage/lcov.info, retention-days: 7 }
 
   bridge-contract:
@@ -121,7 +121,7 @@ jobs:
       - uses: github/codeql-action/upload-sarif@v3
         if: always()
         with: { sarif_file: trivy-fs.sarif, category: trivy-fs }
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with: { name: sbom, path: sbom.cdx.json }
 
   container:
