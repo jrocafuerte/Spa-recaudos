@@ -1,0 +1,50 @@
+/* ARCHIVO GENERADO por design-tokens/build.mjs — NO EDITAR. Modifica design-tokens/*.tokens.json */
+
+:root {
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 24px;
+  --spacing-xxl: 32px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+  --font-size-caption: 13px;
+  --font-size-label: 14px;
+  --font-size-body: 16px;
+  --font-size-input: 17px;
+  --font-size-title: 22px;
+  --font-size-display: 28px;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --border-width-thin: 1px;
+  --border-width-selected: 2px;
+  --color-background: #f4f6fa;
+  --color-surface: #ffffff;
+  --color-text: #0f1b2d;
+  --color-text-muted: #5b6b80;
+  --color-primary: #0b5fff;
+  --color-on-primary: #ffffff;
+  --color-danger: #c62828;
+  --color-success: #1b7f4b;
+  --color-border: #e2e7ef;
+  --color-border-selected: #0b5fff;
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --color-background: #0b1220;
+  --color-surface: #141d2e;
+  --color-text: #e8eef8;
+  --color-text-muted: #9aa9bf;
+  --color-primary: #5b8cff;
+  --color-on-primary: #ffffff;
+  --color-danger: #ef5350;
+  --color-success: #4caf80;
+  --color-border: #24324a;
+  --color-border-selected: #5b8cff;
+  color-scheme: dark;
+}

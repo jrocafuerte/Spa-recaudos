@@ -1,0 +1,16 @@
+{
+  "$description": "Tokens semánticos del tema oscuro (mismas claves que el tema claro).",
+  "color": {
+    "$type": "color",
+    "background": { "$value": "{palette.neutral.950}" },
+    "surface": { "$value": "{palette.neutral.850}" },
+    "text": { "$value": "{palette.neutral.inverse}" },
+    "textMuted": { "$value": "{palette.neutral.400}" },
+    "primary": { "$value": "{palette.brand.300}" },
+    "onPrimary": { "$value": "{palette.neutral.0}" },
+    "danger": { "$value": "{palette.red.400}" },
+    "success": { "$value": "{palette.green.400}" },
+    "border": { "$value": "{palette.neutral.800}" },
+    "borderSelected": { "$value": "{palette.brand.300}" }
+  }
+}

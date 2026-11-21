@@ -1,0 +1,16 @@
+{
+  "$description": "Tokens semánticos del tema claro. Las pantallas SOLO usan tokens semánticos, nunca la paleta.",
+  "color": {
+    "$type": "color",
+    "background": { "$value": "{palette.neutral.50}" },
+    "surface": { "$value": "{palette.neutral.0}" },
+    "text": { "$value": "{palette.neutral.900}" },
+    "textMuted": { "$value": "{palette.neutral.500}" },
+    "primary": { "$value": "{palette.brand.500}" },
+    "onPrimary": { "$value": "{palette.neutral.0}" },
+    "danger": { "$value": "{palette.red.700}" },
+    "success": { "$value": "{palette.green.700}" },
+    "border": { "$value": "{palette.neutral.100}" },
+    "borderSelected": { "$value": "{palette.brand.500}" }
+  }
+}

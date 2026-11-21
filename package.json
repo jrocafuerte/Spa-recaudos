@@ -9,7 +9,8 @@
     "lint": "eslint",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "format": "prettier --write \"src/**/*.{ts,tsx,css}\""
+    "format": "prettier --write \"src/**/*.{ts,tsx,css}\"",
+    "tokens": "node design-tokens/build.mjs --target=web --out=src/app/tokens.generated.css && prettier --write src/app/tokens.generated.css"
   },
   "dependencies": {
     "next": "16.4.6",
@@ -26,6 +27,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.4.6",
     "prettier": "^3.10.1",
+    "style-dictionary": "^5.8.0",
     "typescript": "^5",
     "vite": "^8.3.8",
     "vitest": "^5.1.1"

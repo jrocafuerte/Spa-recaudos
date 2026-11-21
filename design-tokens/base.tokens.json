@@ -1,0 +1,71 @@
+{
+  "$description": "Tokens primitivos (paleta y escalas). Formato W3C Design Tokens (DTCG). Reemplazables por los del Design System del banco.",
+  "palette": {
+    "$type": "color",
+    "brand": {
+      "300": { "$value": "#5B8CFF" },
+      "500": { "$value": "#0B5FFF" },
+      "700": { "$value": "#0842B3" }
+    },
+    "neutral": {
+      "0": { "$value": "#FFFFFF" },
+      "50": { "$value": "#F4F6FA" },
+      "100": { "$value": "#E2E7EF" },
+      "400": { "$value": "#9AA9BF" },
+      "500": { "$value": "#5B6B80" },
+      "800": { "$value": "#24324A" },
+      "850": { "$value": "#141D2E" },
+      "900": { "$value": "#0F1B2D" },
+      "950": { "$value": "#0B1220" },
+      "inverse": { "$value": "#E8EEF8" }
+    },
+    "red": {
+      "400": { "$value": "#EF5350" },
+      "700": { "$value": "#C62828" }
+    },
+    "green": {
+      "400": { "$value": "#4CAF80" },
+      "700": { "$value": "#1B7F4B" }
+    }
+  },
+  "spacing": {
+    "$type": "dimension",
+    "xs": { "$value": "4px" },
+    "sm": { "$value": "8px" },
+    "md": { "$value": "12px" },
+    "lg": { "$value": "16px" },
+    "xl": { "$value": "24px" },
+    "xxl": { "$value": "32px" }
+  },
+  "radius": {
+    "$type": "dimension",
+    "sm": { "$value": "8px" },
+    "md": { "$value": "12px" },
+    "lg": { "$value": "14px" },
+    "pill": { "$value": "999px" }
+  },
+  "font": {
+    "size": {
+      "$type": "dimension",
+      "caption": { "$value": "13px" },
+      "label": { "$value": "14px" },
+      "body": { "$value": "16px" },
+      "input": { "$value": "17px" },
+      "title": { "$value": "22px" },
+      "display": { "$value": "28px" }
+    },
+    "weight": {
+      "$type": "fontWeight",
+      "regular": { "$value": 400 },
+      "semibold": { "$value": 600 },
+      "bold": { "$value": 700 }
+    }
+  },
+  "border": {
+    "width": {
+      "$type": "dimension",
+      "thin": { "$value": "1px" },
+      "selected": { "$value": "2px" }
+    }
+  }
+}

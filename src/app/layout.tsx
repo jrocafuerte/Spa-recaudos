@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { headers } from 'next/headers';
 import { BridgeProvider } from '@/lib/bridge/BridgeProvider';
+import './tokens.generated.css';
 import './globals.css';
 
 export const metadata: Metadata = {

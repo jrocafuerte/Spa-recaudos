@@ -25,6 +25,10 @@ jobs:
       - run: npm ci
       - run: npx prettier --check "src/**/*.{ts,tsx,css}"
       - run: npm run lint
+      - name: Design tokens generados al día
+        run: npm run tokens && git diff --exit-code -- src/app/tokens.generated.css
+      - name: Sin colores literales en CSS/componentes (solo tokens)
+        run: '! grep -nE "#[0-9a-fA-F]{3,8}\b|rgba?\(" src/app/globals.css src/components/*.tsx'
       - run: npm run typecheck
       - run: npx vitest run --coverage --coverage.reporter=lcov --coverage.reporter=text-summary
       - run: npm run build
@@ -36,12 +40,14 @@ jobs:
         with: { name: coverage, path: coverage/lcov.info, retention-days: 7 }
 
   bridge-contract:
-    name: Contrato del puente nativo
+    name: Contratos (puente nativo + design tokens)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: protocol.ts debe coincidir con el hash publicado (idéntico en spa-banca-movil)
         run: sha256sum -c contracts/bridge-protocol.sha256
+      - name: Design tokens idénticos en spa-banca-movil y spa-recaudos
+        run: sha256sum -c contracts/design-tokens.sha256
 
   sonar:
     name: SonarQube (quality gate)
