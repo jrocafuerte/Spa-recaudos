@@ -1,6 +1,6 @@
 # Design Tokens
 
-Fuente única de verdad del estilo visual para la **app nativa** (`spa-banca-movil`) y el
+Fuente única de verdad del estilo visual (hoy importada del **Design System Beat**: ver [BEAT.md](BEAT.md)) para la **app nativa** (`spa-banca-movil`) y el
 **micro frontend** (`spa-recaudos`). Formato [W3C Design Tokens (DTCG)](https://tr.designtokens.org/format/),
 procesado con [Style Dictionary](https://styledictionary.com/) v5.
 

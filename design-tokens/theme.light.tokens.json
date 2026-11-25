@@ -1,16 +1,86 @@
 {
-  "$description": "Tokens semánticos del tema claro. Las pantallas SOLO usan tokens semánticos, nunca la paleta.",
+  "$description": "GENERADO por design-tokens/import-beat.mjs (Beat, tema light). No editar a mano: re-importar.",
   "color": {
     "$type": "color",
-    "background": { "$value": "{palette.neutral.50}" },
-    "surface": { "$value": "{palette.neutral.0}" },
-    "text": { "$value": "{palette.neutral.900}" },
-    "textMuted": { "$value": "{palette.neutral.500}" },
-    "primary": { "$value": "{palette.brand.500}" },
-    "onPrimary": { "$value": "{palette.neutral.0}" },
-    "danger": { "$value": "{palette.red.700}" },
-    "success": { "$value": "{palette.green.700}" },
-    "border": { "$value": "{palette.neutral.100}" },
-    "borderSelected": { "$value": "{palette.brand.500}" }
+    "background": {
+      "$value": "#ffffff",
+      "$extensions": {
+        "com.bolivariano.beat": {
+          "token": "beatColorBackgroundBaseCanvas"
+        }
+      }
+    },
+    "surface": {
+      "$value": "#ffffff",
+      "$extensions": {
+        "com.bolivariano.beat": {
+          "token": "beatColorBackgroundSurfaceRaised"
+        }
+      }
+    },
+    "text": {
+      "$value": "#1a1a1a",
+      "$extensions": {
+        "com.bolivariano.beat": {
+          "token": "beatColorTextPrimary"
+        }
+      }
+    },
+    "textMuted": {
+      "$value": "#474747",
+      "$extensions": {
+        "com.bolivariano.beat": {
+          "token": "beatColorTextSecondary"
+        }
+      }
+    },
+    "primary": {
+      "$value": "#008292",
+      "$extensions": {
+        "com.bolivariano.beat": {
+          "token": "beatColorButtonBrandPrimaryCtaButtonBackgroundDefault"
+        }
+      }
+    },
+    "onPrimary": {
+      "$value": "#ffffff",
+      "$extensions": {
+        "com.bolivariano.beat": {
+          "token": "beatColorButtonBrandPrimaryCtaButtonTextDefault"
+        }
+      }
+    },
+    "danger": {
+      "$value": "#be1125",
+      "$extensions": {
+        "com.bolivariano.beat": {
+          "token": "beatColorTextStatusDangerDefault"
+        }
+      }
+    },
+    "success": {
+      "$value": "#0a7111",
+      "$extensions": {
+        "com.bolivariano.beat": {
+          "token": "beatColorTextStatusSuccesDefault"
+        }
+      }
+    },
+    "border": {
+      "$value": "#cccccc",
+      "$extensions": {
+        "com.bolivariano.beat": {
+          "token": "beatColorBorderDefault"
+        }
+      }
+    },
+    "borderSelected": {
+      "$value": "#008292",
+      "$extensions": {
+        "com.bolivariano.beat": {
+          "token": "beatColorButtonBrandSecondaryCtaButtonBorderDefault"
+        }
+      }
+    }
   }
 }

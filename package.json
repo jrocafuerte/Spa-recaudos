@@ -10,9 +10,11 @@
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\"",
-    "tokens": "node design-tokens/build.mjs --target=web --out=src/app/tokens.generated.css && prettier --write src/app/tokens.generated.css"
+    "tokens": "node design-tokens/build.mjs --target=web --out=src/app/tokens.generated.css && prettier --write src/app/tokens.generated.css",
+    "tokens:import-beat": "node design-tokens/import-beat.mjs"
   },
   "dependencies": {
+    "@fontsource/lexend": "^5.3.0",
     "next": "16.4.6",
     "react": "19.3.0",
     "react-dom": "19.3.0",

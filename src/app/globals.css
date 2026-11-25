@@ -14,12 +14,7 @@ body {
   margin: 0;
   background: var(--color-background);
   color: var(--color-text);
-  font-family:
-    system-ui,
-    -apple-system,
-    'Segoe UI',
-    Roboto,
-    sans-serif;
+  font-family: var(--font-family-base);
   font-size: var(--font-size-body);
   -webkit-font-smoothing: antialiased;
   overscroll-behavior: none; /* sin "rebote" web dentro del WebView */
@@ -137,7 +132,8 @@ h2 {
 .field input {
   font: inherit;
   font-size: var(--font-size-input);
-  padding: var(--spacing-md);
+  min-height: var(--size-control);
+  padding: 0 var(--spacing-md);
   border-radius: var(--radius-md);
   border: var(--border-width-thin) solid var(--color-border);
   background: var(--color-surface);
@@ -150,9 +146,10 @@ h2 {
 
 .btn {
   width: 100%;
-  padding: var(--spacing-lg);
+  min-height: var(--size-control);
+  padding: 0 var(--spacing-xl);
   border: 0;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   font: inherit;
   font-weight: var(--font-weight-semibold);
   font-size: var(--font-size-body);

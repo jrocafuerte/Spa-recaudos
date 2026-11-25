@@ -101,6 +101,10 @@ function validate(theme, tokens) {
     throw new Error(`Tema ${theme}: contraste insuficiente (WCAG 2.2 AA)\n  - ${failures.join('\n  - ')}`);
 }
 
+/** Nombre de familia sin comillas (React Native usa el nombre registrado, no una pila CSS). */
+const fontFamilyName = (v) => (Array.isArray(v) ? v[0] : String(v)).replace(/["']/g, '').trim();
+/** Pila CSS con respaldos del sistema mientras carga la fuente. */
+const cssFontStack = (v) => `'${fontFamilyName(v)}', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif`;
 const px = (v) => (typeof v === 'number' ? v : Number.parseFloat(String(v)));
 const kebab = (s) =>
   s
@@ -111,7 +115,7 @@ const kebab = (s) =>
 const resolved = Object.fromEntries(await Promise.all(THEMES.map(async (th) => [th, await resolve(th)])));
 THEMES.forEach((th) => validate(th, resolved[th]));
 const base = resolved.light;
-const scales = ['spacing', 'radius', 'font', 'border'];
+const scales = ['spacing', 'radius', 'size', 'font', 'border'];
 
 let output;
 if (target === 'native') {
@@ -122,7 +126,8 @@ if (target === 'native') {
       const keys = k.split('.');
       let node = obj;
       keys.slice(0, -1).forEach((key) => (node = node[key] ??= {}));
-      node[keys.at(-1)] = t.type === 'fontWeight' ? String(t.value) : px(t.value);
+      node[keys.at(-1)] =
+        t.type === 'fontWeight' ? String(t.value) : t.type === 'fontFamily' ? fontFamilyName(t.value) : px(t.value);
     }
     return obj;
   };
@@ -135,7 +140,7 @@ if (target === 'native') {
   const vars = (tokens, roots) =>
     tokens
       .filter((t) => roots.includes(t.path[0]))
-      .map((t) => `  --${kebab(t.path.join('.'))}: ${t.value};`)
+      .map((t) => `  --${kebab(t.path.join('.'))}: ${t.type === 'fontFamily' ? cssFontStack(t.value) : t.value};`)
       .join('\n');
   output = [
     `/* ${HEADER} */`,

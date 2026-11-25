@@ -1,71 +1,220 @@
 {
-  "$description": "Tokens primitivos (paleta y escalas). Formato W3C Design Tokens (DTCG). Reemplazables por los del Design System del banco.",
-  "palette": {
-    "$type": "color",
-    "brand": {
-      "300": { "$value": "#5B8CFF" },
-      "500": { "$value": "#0B5FFF" },
-      "700": { "$value": "#0842B3" }
-    },
-    "neutral": {
-      "0": { "$value": "#FFFFFF" },
-      "50": { "$value": "#F4F6FA" },
-      "100": { "$value": "#E2E7EF" },
-      "400": { "$value": "#9AA9BF" },
-      "500": { "$value": "#5B6B80" },
-      "800": { "$value": "#24324A" },
-      "850": { "$value": "#141D2E" },
-      "900": { "$value": "#0F1B2D" },
-      "950": { "$value": "#0B1220" },
-      "inverse": { "$value": "#E8EEF8" }
-    },
-    "red": {
-      "400": { "$value": "#EF5350" },
-      "700": { "$value": "#C62828" }
-    },
-    "green": {
-      "400": { "$value": "#4CAF80" },
-      "700": { "$value": "#1B7F4B" }
-    }
-  },
+  "$description": "GENERADO por design-tokens/import-beat.mjs desde @bolivariano/ds-tokens (Beat). No editar a mano: re-importar.",
   "spacing": {
     "$type": "dimension",
-    "xs": { "$value": "4px" },
-    "sm": { "$value": "8px" },
-    "md": { "$value": "12px" },
-    "lg": { "$value": "16px" },
-    "xl": { "$value": "24px" },
-    "xxl": { "$value": "32px" }
+    "xs": {
+      "$value": "4px",
+      "$extensions": {
+        "com.bolivariano.beat": {
+          "token": "beatSpacePadding4"
+        }
+      }
+    },
+    "sm": {
+      "$value": "8px",
+      "$extensions": {
+        "com.bolivariano.beat": {
+          "token": "beatSpacePadding8"
+        }
+      }
+    },
+    "md": {
+      "$value": "12px",
+      "$extensions": {
+        "com.bolivariano.beat": {
+          "token": "beatSpacePadding12"
+        }
+      }
+    },
+    "lg": {
+      "$value": "16px",
+      "$extensions": {
+        "com.bolivariano.beat": {
+          "token": "beatSpacePadding16"
+        }
+      }
+    },
+    "xl": {
+      "$value": "24px",
+      "$extensions": {
+        "com.bolivariano.beat": {
+          "token": "beatSpacePadding24"
+        }
+      }
+    },
+    "xxl": {
+      "$value": "32px",
+      "$extensions": {
+        "com.bolivariano.beat": {
+          "token": "beatSpacePadding32"
+        }
+      }
+    }
   },
   "radius": {
     "$type": "dimension",
-    "sm": { "$value": "8px" },
-    "md": { "$value": "12px" },
-    "lg": { "$value": "14px" },
-    "pill": { "$value": "999px" }
+    "sm": {
+      "$value": "8px",
+      "$extensions": {
+        "com.bolivariano.beat": {
+          "token": "beatBorderRadiusComponentDefault"
+        }
+      }
+    },
+    "md": {
+      "$value": "8px",
+      "$extensions": {
+        "com.bolivariano.beat": {
+          "token": "beatBorderRadiusComponentDefault"
+        }
+      }
+    },
+    "lg": {
+      "$value": "12px",
+      "$extensions": {
+        "com.bolivariano.beat": {
+          "token": "beatBorderRadiusContainer"
+        }
+      }
+    },
+    "pill": {
+      "$value": "999px",
+      "$extensions": {
+        "com.bolivariano.beat": {
+          "token": "beatBorderRadiusCircle"
+        }
+      }
+    }
+  },
+  "size": {
+    "$type": "dimension",
+    "control": {
+      "$value": "48px",
+      "$extensions": {
+        "com.bolivariano.beat": {
+          "token": "beatSizeInputSizeHeightDefault"
+        }
+      }
+    },
+    "bottomBar": {
+      "$value": "64px",
+      "$extensions": {
+        "com.bolivariano.beat": {
+          "token": "beatDimension64"
+        }
+      }
+    }
   },
   "font": {
+    "family": {
+      "base": {
+        "$value": "Lexend",
+        "$extensions": {
+          "com.bolivariano.beat": {
+            "token": "beatFontFamilyFontFamily"
+          }
+        }
+      },
+      "$type": "fontFamily"
+    },
     "size": {
-      "$type": "dimension",
-      "caption": { "$value": "13px" },
-      "label": { "$value": "14px" },
-      "body": { "$value": "16px" },
-      "input": { "$value": "17px" },
-      "title": { "$value": "22px" },
-      "display": { "$value": "28px" }
+      "caption": {
+        "$value": "12px",
+        "$extensions": {
+          "com.bolivariano.beat": {
+            "token": "beatFontSizeCaptionC1Size"
+          }
+        }
+      },
+      "label": {
+        "$value": "14px",
+        "$extensions": {
+          "com.bolivariano.beat": {
+            "token": "beatFontSizeBodyB3Size"
+          }
+        }
+      },
+      "body": {
+        "$value": "16px",
+        "$extensions": {
+          "com.bolivariano.beat": {
+            "token": "beatFontSizeBodyB2Size"
+          }
+        }
+      },
+      "input": {
+        "$value": "16px",
+        "$extensions": {
+          "com.bolivariano.beat": {
+            "token": "beatFontSizeBodyB2Size"
+          }
+        }
+      },
+      "title": {
+        "$value": "22px",
+        "$extensions": {
+          "com.bolivariano.beat": {
+            "token": "beatFontSizeHeadingH5Size"
+          }
+        }
+      },
+      "display": {
+        "$value": "26px",
+        "$extensions": {
+          "com.bolivariano.beat": {
+            "token": "beatFontSizeHeadingH4Size"
+          }
+        }
+      },
+      "$type": "dimension"
     },
     "weight": {
-      "$type": "fontWeight",
-      "regular": { "$value": 400 },
-      "semibold": { "$value": 600 },
-      "bold": { "$value": 700 }
+      "regular": {
+        "$value": 400,
+        "$extensions": {
+          "com.bolivariano.beat": {
+            "token": "beatFontWeightBodyB2WeightRegular"
+          }
+        }
+      },
+      "semibold": {
+        "$value": 600,
+        "$extensions": {
+          "com.bolivariano.beat": {
+            "token": "beatFontWeightBodyB2WeightStrong"
+          }
+        }
+      },
+      "bold": {
+        "$value": 700,
+        "$extensions": {
+          "com.bolivariano.beat": {
+            "token": "beatFontWeightHeadingH3Weight"
+          }
+        }
+      },
+      "$type": "fontWeight"
     }
   },
   "border": {
     "width": {
-      "$type": "dimension",
-      "thin": { "$value": "1px" },
-      "selected": { "$value": "2px" }
+      "thin": {
+        "$value": "1px",
+        "$extensions": {
+          "com.bolivariano.beat": {
+            "token": "beatBorderWidthDefault"
+          }
+        }
+      },
+      "selected": {
+        "$value": "2px",
+        "$extensions": {
+          "com.bolivariano.beat": {
+            "token": "beatBorderWidthFocus"
+          }
+        }
+      },
+      "$type": "dimension"
     }
   }
 }

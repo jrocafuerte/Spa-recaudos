@@ -1,6 +1,10 @@
 import type { Metadata, Viewport } from 'next';
 import { headers } from 'next/headers';
 import { BridgeProvider } from '@/lib/bridge/BridgeProvider';
+// Tipografía del Design System (Lexend), autoalojada: compatible con la CSP (font-src 'self').
+import '@fontsource/lexend/latin-400.css';
+import '@fontsource/lexend/latin-600.css';
+import '@fontsource/lexend/latin-700.css';
 import './tokens.generated.css';
 import './globals.css';
 
