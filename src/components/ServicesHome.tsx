@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { api } from '@/lib/api/client';
 import type { Biller, Category } from '@/lib/api/types';
 import { useNativeHeader } from '@/lib/bridge/BridgeProvider';
+import { Icon } from './Icon';
 
 export function ServicesHome() {
   useNativeHeader('Pago de servicios', false);
@@ -13,6 +14,7 @@ export function ServicesHome() {
   const [category, setCategory] = useState<string>();
   const [q, setQ] = useState('');
   const [error, setError] = useState<string>();
+  const iconFor = (categoryId: string) => categories?.find((c) => c.id === categoryId)?.icon ?? 'services';
 
   useEffect(() => {
     api<{ items: Category[] }>('v1/categories')
@@ -58,7 +60,7 @@ export function ServicesHome() {
                 aria-pressed={category === c.id}
                 onClick={() => setCategory(category === c.id ? undefined : c.id)}
               >
-                {c.name}
+                <Icon name={c.icon} /> {c.name}
               </button>
             ))
           : Array.from({ length: 4 }, (_, i) => <div key={i} className="skeleton" />)}
@@ -69,11 +71,12 @@ export function ServicesHome() {
         {billers?.map((b) => (
           <li key={b.id}>
             <Link className="row" href={`/billers/${b.id}`}>
-              <span>
+              <Icon name={iconFor(b.categoryId)} className="row-icon" />
+              <span className="row-text">
                 {b.name}
                 <small>{b.referenceLabel}</small>
               </span>
-              <span aria-hidden>›</span>
+              <Icon name="chevron-right" className="row-chevron" />
             </Link>
           </li>
         ))}

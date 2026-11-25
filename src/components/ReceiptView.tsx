@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { api } from '@/lib/api/client';
 import { type Receipt, formatMoney } from '@/lib/api/types';
 import { bridge } from '@/lib/bridge/bridge';
+import { Icon } from './Icon';
 import { formatDateTime } from '@/lib/format';
 import { useNativeHeader } from '@/lib/bridge/BridgeProvider';
 
@@ -36,8 +37,8 @@ export function ReceiptView({ paymentId }: { paymentId: string }) {
 
   return (
     <>
-      <p className="success" aria-hidden>
-        ✓
+      <p className="success">
+        <Icon name="success" />
       </p>
       <h1 className="center">¡Pago realizado!</h1>
       <p className="total">{formatMoney(r.total, r.currency)}</p>
@@ -56,7 +57,7 @@ export function ReceiptView({ paymentId }: { paymentId: string }) {
         </dl>
       </div>
       <button className="btn secondary" onClick={share}>
-        Compartir comprobante
+        <Icon name="share" /> Compartir comprobante
       </button>
       <button className="btn" onClick={() => bridge.send({ type: 'CLOSE', payload: { reason: 'done' } })}>
         Finalizar

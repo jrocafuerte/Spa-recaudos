@@ -60,6 +60,15 @@ registrados en `src/shared/ui/fonts.ts`); micro frontend: `@fontsource/lexend` (
     parte de la escala tipográfica (400/600/700).
 11. Raíz: `"typescript": "v7.0.2"` (prefijo `v` no estándar en semver).
 
+## Íconos
+
+Se usa **Font Awesome** con la misma pila que Beat (`@fortawesome/fontawesome-svg-core` +
+`@fortawesome/react-native-fontawesome` en la app y `@fortawesome/react-fontawesome` en web), con el
+set **Free** (`@fortawesome/free-solid-svg-icons`). Para pasar al kit Pro de Beat
+(`@awesome.me/kit-…`, requiere el token del registro de Font Awesome), solo cambia el origen de los
+íconos en `src/shared/ui/adapters/default/index.tsx` (`ICONS`) y en `spa-recaudos/src/components/Icon.tsx`.
+Las pantallas usan nombres semánticos (`IconName`), no íconos concretos.
+
 ## Componentes de Beat
 
 La app aplica hoy los **lineamientos** (tokens) de Beat a su kit propio. Para usar los **componentes** de

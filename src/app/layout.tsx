@@ -5,6 +5,8 @@ import { BridgeProvider } from '@/lib/bridge/BridgeProvider';
 import '@fontsource/lexend/latin-400.css';
 import '@fontsource/lexend/latin-600.css';
 import '@fontsource/lexend/latin-700.css';
+// Estilos de Font Awesome como CSS estático (la inyección en runtime la bloquearía la CSP).
+import '@fortawesome/fontawesome-svg-core/styles.css';
 import './tokens.generated.css';
 import './globals.css';
 
